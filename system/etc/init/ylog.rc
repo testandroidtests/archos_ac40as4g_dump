@@ -1,0 +1,4 @@
+service ylog /system/bin/ylog
+    class main
+    user root
+    disabled

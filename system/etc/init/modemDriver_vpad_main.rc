@@ -1,0 +1,7 @@
+service modemDriver /system/bin/modemDriver_vpad_main
+    class core
+    user system
+    group system radio shell
+
+on property:persist.sys.volte.enable=true
+    start modemDriver

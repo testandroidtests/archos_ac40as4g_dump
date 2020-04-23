@@ -1,0 +1,56 @@
+on property:ro.bootmode=cali
+    insmod /system/lib/modules/focaltech_ts.ko
+
+	mkdir /data/gnss/ 0777 system system
+	mkdir /data/gnss/bin/ 0777 system system
+	mkdir /data/gnss/supl/ 0777 system system
+	mkdir /data/gnss/config/ 0777 system system
+	mkdir /data/gnss/lte/ 0777 system system
+	chmod 666 /data/gnss/bin/gnssmodem.bin
+	chmod 666 /data/gnss/config/config.xml
+	chmod 666 /data/gnss/supl/supl.xml
+	chmod 666 /data/gnss/supl/spirentroot.cer
+	chmod 666 /data/gnss/lte/ext.eph
+	chmod 666 /data/gnss/lte/jpleph.405
+	chmod 666 /data/gnss/gnss.log
+	chmod 666 /data/gnss/nmea.log
+	chmod 666 /data/gnss/tsx.dat
+	chmod 666 /productinfo/tsx.dat
+
+service download /system/bin/download
+    class cali
+    user root
+    group root
+
+service gnss_download /system/bin/gnss_download
+    class cali
+    user system
+    group system
+    oneshot
+
+on property:ro.bootmode=factorytest
+
+	mkdir /data/gnss/ 0777 system system
+	mkdir /data/gnss/bin/ 0777 system system
+	mkdir /data/gnss/supl/ 0777 system system
+	mkdir /data/gnss/config/ 0777 system system
+	mkdir /data/gnss/lte/ 0777 system system
+	chmod 666 /data/gnss/bin/gnssmodem.bin
+	chmod 666 /data/gnss/config/config.xml
+	chmod 666 /data/gnss/supl/supl.xml
+	chmod 666 /data/gnss/supl/spirentroot.cer
+	chmod 666 /data/gnss/lte/ext.eph
+	chmod 666 /data/gnss/lte/jpleph.405
+	chmod 666 /data/gnss/gnss.log
+	chmod 666 /data/gnss/nmea.log
+	chmod 666 /data/gnss/tsx.dat
+
+service download-ft /system/bin/download
+    class factorytest
+    user root
+    group root
+
+service gnss_download-ft /system/bin/gnss_download
+    class factorytest
+    user root
+    group root

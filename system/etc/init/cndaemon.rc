@@ -1,0 +1,8 @@
+#cndaemon
+service cndaemon /system/bin/cndaemon
+    socket iptablesserver stream 660 system system
+    user root
+    group sdcard_rw shell
+
+on boot
+    start cndaemon

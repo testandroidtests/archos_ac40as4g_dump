@@ -1,0 +1,6 @@
+#dsd
+service dsd /system/bin/dsd
+    socket dsserver stream 660 system system
+    user root
+    group sdcard_rw shell
+    disabled

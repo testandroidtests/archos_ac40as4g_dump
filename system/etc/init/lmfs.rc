@@ -1,0 +1,9 @@
+on boot
+    start lmfs
+
+service lmfs /system/bin/lmfs
+    class main
+    socket lmfs stream 0777 root root
+    user root
+    disabled
+
